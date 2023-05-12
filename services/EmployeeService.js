@@ -63,6 +63,28 @@ const getAllemployee = () => new Promise(
   },
 );
 /**
+* Get all the data based on user query
+*
+* attribute String the attribute based on which the search is performed
+* value String the value parameter based on which the search is performed
+* returns Object
+* */
+const getByParamsemployee = ({ attribute, value }) => new Promise(
+  async (resolve, reject) => {
+    try {
+      let query = {}
+      query = await Employee.find({ [attribute]: value }).exec();
+      // this is a test
+      resolve(Service.successResponse(query));
+    } catch (e) {
+      reject(Service.rejectResponse(
+        e.message || 'Invalid input',
+        e.status || 405,
+      ));
+    }
+  },
+);
+/**
 * Get the element
 *
 * employeeId String the Id parameter
@@ -109,6 +131,7 @@ module.exports = {
   createemployee,
   deleteemployee,
   getAllemployee,
+  getByParamsemployee,
   getemployee,
   updateemployee,
 };

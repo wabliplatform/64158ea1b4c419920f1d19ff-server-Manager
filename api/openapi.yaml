@@ -130,6 +130,40 @@ paths:
       - task
       x-method-getAll: "true"
       x-eov-operation-handler: controllers/TaskController
+  /task/getByParams/{attribute}/{value}:
+    get:
+      operationId: getByParamstask
+      parameters:
+      - description: the attribute based on which the search is performed
+        explode: false
+        in: path
+        name: attribute
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: the value parameter based on which the search is performed
+        explode: false
+        in: path
+        name: value
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/task'
+                type: array
+          description: successful operation
+      summary: Get all the data based on user query
+      tags:
+      - task
+      x-method-get-by-params: "true"
+      x-eov-operation-handler: controllers/TaskController
   /employee:
     post:
       operationId: createemployee
@@ -236,6 +270,40 @@ paths:
       tags:
       - employee
       x-method-getAll: "true"
+      x-eov-operation-handler: controllers/EmployeeController
+  /employee/getByParams/{attribute}/{value}:
+    get:
+      operationId: getByParamsemployee
+      parameters:
+      - description: the attribute based on which the search is performed
+        explode: false
+        in: path
+        name: attribute
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: the value parameter based on which the search is performed
+        explode: false
+        in: path
+        name: value
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/employee'
+                type: array
+          description: successful operation
+      summary: Get all the data based on user query
+      tags:
+      - employee
+      x-method-get-by-params: "true"
       x-eov-operation-handler: controllers/EmployeeController
 components:
   schemas:

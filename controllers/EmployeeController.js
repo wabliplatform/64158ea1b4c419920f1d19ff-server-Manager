@@ -20,6 +20,10 @@ const getAllemployee = async (request, response) => {
   await Controller.handleRequest(request, response, service.getAllemployee);
 };
 
+const getByParamsemployee = async (request, response) => {
+  await Controller.handleRequest(request, response, service.getByParamsemployee);
+};
+
 const getemployee = async (request, response) => {
   await Controller.handleRequest(request, response, service.getemployee);
 };
@@ -33,6 +37,7 @@ module.exports = {
   createemployee,
   deleteemployee,
   getAllemployee,
+  getByParamsemployee,
   getemployee,
   updateemployee,
 };

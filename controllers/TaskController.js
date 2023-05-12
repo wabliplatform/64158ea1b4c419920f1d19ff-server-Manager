@@ -20,6 +20,10 @@ const getAlltask = async (request, response) => {
   await Controller.handleRequest(request, response, service.getAlltask);
 };
 
+const getByParamstask = async (request, response) => {
+  await Controller.handleRequest(request, response, service.getByParamstask);
+};
+
 const gettask = async (request, response) => {
   await Controller.handleRequest(request, response, service.gettask);
 };
@@ -33,6 +37,7 @@ module.exports = {
   createtask,
   deletetask,
   getAlltask,
+  getByParamstask,
   gettask,
   updatetask,
 };

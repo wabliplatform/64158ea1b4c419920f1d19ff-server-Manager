@@ -63,6 +63,28 @@ const getAlltask = () => new Promise(
   },
 );
 /**
+* Get all the data based on user query
+*
+* attribute String the attribute based on which the search is performed
+* value String the value parameter based on which the search is performed
+* returns Object
+* */
+const getByParamstask = ({ attribute, value }) => new Promise(
+  async (resolve, reject) => {
+    try {
+      let query = {}
+      query = await Task.find({ [attribute]: value }).populate(['taskEmployee']).exec();
+      // this is a test
+      resolve(Service.successResponse(query));
+    } catch (e) {
+      reject(Service.rejectResponse(
+        e.message || 'Invalid input',
+        e.status || 405,
+      ));
+    }
+  },
+);
+/**
 * Get the element
 *
 * taskId String the Id parameter
@@ -109,6 +131,7 @@ module.exports = {
   createtask,
   deletetask,
   getAlltask,
+  getByParamstask,
   gettask,
   updatetask,
 };

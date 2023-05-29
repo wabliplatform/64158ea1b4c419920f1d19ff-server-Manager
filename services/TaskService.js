@@ -65,15 +65,14 @@ const getAlltask = () => new Promise(
 /**
 * Get all the data based on user query
 *
-* attribute String the attribute based on which the search is performed
-* value String the value parameter based on which the search is performed
+* filter String the query based on which the search is performed
 * returns Object
 * */
-const getByParamstask = ({ attribute, value }) => new Promise(
+const getByParamstask = ({ filter }) => new Promise(
   async (resolve, reject) => {
     try {
       let query = {}
-      query = await Task.find({ [attribute]: value }).populate(['taskEmployee']).exec();
+      query = await Task.find(JSON.parse( filter )).populate(['taskEmployee']).exec();
       // this is a test
       resolve(Service.successResponse(query));
     } catch (e) {

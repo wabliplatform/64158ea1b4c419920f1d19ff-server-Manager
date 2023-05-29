@@ -130,26 +130,18 @@ paths:
       - task
       x-method-getAll: "true"
       x-eov-operation-handler: controllers/TaskController
-  /task/getByParams/{attribute}/{value}:
+  /task/getByParams:
     get:
       operationId: getByParamstask
       parameters:
-      - description: the attribute based on which the search is performed
-        explode: false
-        in: path
-        name: attribute
+      - description: the query based on which the search is performed
+        explode: true
+        in: query
+        name: filter
         required: true
         schema:
           type: string
-        style: simple
-      - description: the value parameter based on which the search is performed
-        explode: false
-        in: path
-        name: value
-        required: true
-        schema:
-          type: string
-        style: simple
+        style: form
       responses:
         "200":
           content:
@@ -271,26 +263,18 @@ paths:
       - employee
       x-method-getAll: "true"
       x-eov-operation-handler: controllers/EmployeeController
-  /employee/getByParams/{attribute}/{value}:
+  /employee/getByParams:
     get:
       operationId: getByParamsemployee
       parameters:
-      - description: the attribute based on which the search is performed
-        explode: false
-        in: path
-        name: attribute
+      - description: the query based on which the search is performed
+        explode: true
+        in: query
+        name: filter
         required: true
         schema:
           type: string
-        style: simple
-      - description: the value parameter based on which the search is performed
-        explode: false
-        in: path
-        name: value
-        required: true
-        schema:
-          type: string
-        style: simple
+        style: form
       responses:
         "200":
           content:
